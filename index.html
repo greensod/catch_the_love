@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catch the Love</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>💖 Catch the Love 💖</h1>
+
+<!-- Character Selection -->
+<div id="selectors">
+  <label>Choose Girl</label>
+  <select onchange="changeGirl(this.value)">
+    <option value="girl1.jpeg">Girl 1</option>
+    <option value="girl2.jpeg">Girl 2</option>
+  </select>
+
+  <label>Choose Boy</label>
+  <select onchange="changeBoy(this.value)">
+    <option value="boy1.jpeg">Boy 1</option>
+    <option value="boy2.jpeg">Boy 2</option>
+  </select>
+</div>
+<!-- Start / Restart Button -->
+<!-- WRAPPER TO CENTER EVERYTHING -->
+<div id="game-wrapper">
+
+  <!-- Live Score -->
+  <div id="score-board">
+    Score: <span id="score">0</span>
+  </div>
+
+  <!-- Start / Restart Button -->
+  <button id="start-btn">Start Game 💖</button>
+
+  <!-- Game Area -->
+  <div id="game">
+    <img id="girl" src="assets/girl1.jpeg">
+    <div id="boy">
+      <img id="boy-face" src="assets/boy1.jpeg">
+    </div>
+  </div>
+
+</div> <!-- end of game-wrapper -->
+
+</div>
+
+
+
+
+<script src="game.js"></script>
+</body>
+</html>

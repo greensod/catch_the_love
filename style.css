@@ -1,0 +1,110 @@
+body {
+  background: #ffe6f0;
+  font-family: "Comic Sans MS", cursive;
+  text-align: center;
+}
+
+/* SELECTORS */
+#selectors {
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: none;
+  background: #ffccdd;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+/* WRAPPER TO CENTER SCORE, BUTTON, GAME */
+#game-wrapper {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center horizontally */
+  margin-top: 20px;
+}
+
+/* SCORE */
+#score-board {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff3399;
+  background: #fff0f5;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: fit-content;
+  text-align: center;
+  margin-bottom: 10px;
+  animation: float 1.5s ease-in-out infinite alternate;
+}
+
+/* FLOATING EFFECT */
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+/* START BUTTON */
+#start-btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #ff99cc, #ff66aa);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255,0,150,0.4);
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+#start-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255,0,150,0.6);
+}
+
+#start-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 10px rgba(255,0,150,0.4);
+}
+
+/* GAME BOX */
+#game {
+  width: 400px;
+  height: 600px;
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* GIRL FALLING */
+#girl {
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 170px;
+  transition: left 0.08s linear; /* REMOVE top transition */
+}
+
+
+/* BOY */
+#boy {
+  width: 100px;
+  height: 120px;
+  position: absolute;
+  bottom: 10px;
+  left: 150px;
+}
+
+#boy-face {
+  width: 90px;
+  border-radius: 50%;
+  border: 3px solid #ff99bb;
+  transition: left 0.08s linear;
+}
