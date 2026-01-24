@@ -1,86 +1,190 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
-  background: #ffe6f0;
+  background: linear-gradient(135deg, #ffe6f0 0%, #ffd6e8 100%);
   font-family: "Comic Sans MS", cursive;
   text-align: center;
+  margin: 0;
+  padding: 10px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+h1 {
+  font-size: 48px;
+  color: #ff3399;
+  text-shadow: 3px 3px 6px rgba(255, 0, 150, 0.3);
+  margin: 15px 0;
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* SELECTORS */
 #selectors {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
 
 select {
-  padding: 6px 10px;
-  border-radius: 12px;
-  border: none;
-  background: #ffccdd;
-  font-size: 14px;
-  margin: 0 5px;
-}
-
-/* WRAPPER TO CENTER SCORE, BUTTON, GAME */
-#game-wrapper {
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  align-items: center;    /* center horizontally */
-  margin-top: 20px;
-}
-
-/* SCORE */
-#score-board {
-  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: 2px solid #ff99cc;
+  background: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-weight: bold;
   color: #ff3399;
+  min-width: 120px;
+}
+
+select:hover, select:focus {
   background: #fff0f5;
+  border-color: #ff3399;
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: 0 0 15px rgba(255, 51, 153, 0.5);
+}
+
+label {
+  font-weight: bold;
+  color: #ff3399;
+  font-size: 16px;
+  display: inline-block;
+}
+
+/* WRAPPER */
+#game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+/* STATS CONTAINER */
+#stats-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* SCORE BOARDS */
+#score-board, #high-score-board, #lives-board {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff3399;
+  background: white;
   padding: 10px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  width: fit-content;
-  text-align: center;
-  margin-bottom: 10px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  border: 3px solid #ffccdd;
+  min-width: 90px;
+  transition: all 0.3s ease;
+}
+
+#score-board {
   animation: float 1.5s ease-in-out infinite alternate;
+}
+
+#high-score-board {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
+  border-color: #ffcc99;
+  animation: float 1.5s ease-in-out infinite alternate 0.5s;
+}
+
+#lives-board {
+  font-size: 24px;
+  animation: float 1.5s ease-in-out infinite alternate 1s;
+}
+
+/* COMBO DISPLAY */
+#combo {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 42px;
+  font-weight: bold;
+  color: #ff3399;
+  text-shadow: 3px 3px 10px rgba(255, 51, 153, 0.5);
+  z-index: 1000;
+  display: none;
+  animation: comboFlash 0.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes comboFlash {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
 /* FLOATING EFFECT */
 @keyframes float {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
+  100% { transform: translateY(-8px); }
 }
 
 /* START BUTTON */
 #start-btn {
-  padding: 12px 25px;
-  font-size: 18px;
+  padding: 15px 35px;
+  font-size: 22px;
   font-weight: bold;
-  color: #fff;
-  background: linear-gradient(45deg, #ff99cc, #ff66aa);
+  color: white;
+  background: linear-gradient(135deg, #ff99cc 0%, #ff66aa 100%);
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255,0,150,0.4);
-  transition: all 0.2s ease;
-  margin-bottom: 10px;
-}
-
-#start-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(255,0,150,0.6);
+  box-shadow: 0 6px 20px rgba(255,0,150,0.4);
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  touch-action: manipulation;
 }
 
 #start-btn:active {
   transform: scale(0.95);
-  box-shadow: 0 3px 10px rgba(255,0,150,0.4);
+  box-shadow: 0 4px 15px rgba(255,0,150,0.4);
 }
 
 /* GAME BOX */
 #game {
   width: 400px;
   height: 600px;
-  background: #fff;
-  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #fff5f9 100%);
+  border-radius: 25px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  border: 4px solid #ffccdd;
+  transition: transform 0.1s ease;
+  touch-action: none;
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+#game.shake {
+  animation: shake 0.5s;
 }
 
 /* GIRL FALLING */
@@ -89,22 +193,210 @@ select {
   position: absolute;
   top: 0;
   left: 170px;
-  transition: left 0.08s linear; /* REMOVE top transition */
+  transition: left 0.08s linear;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  pointer-events: none;
 }
-
 
 /* BOY */
 #boy {
   width: 100px;
-  height: 120px;
+  height: 140px;
   position: absolute;
   bottom: 10px;
   left: 150px;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: left 0.05s linear;
+  pointer-events: none;
 }
 
 #boy-face {
   width: 90px;
+  outline: none;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+/* LOVE POP ANIMATION */
+@keyframes lovePop {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg) translateY(-30px);
+  }
+  100% {
+    transform: scale(2) rotate(360deg) translateY(-60px);
+    opacity: 0;
+  }
+}
+
+/* PARTICLE SYSTEM */
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 3px solid #ff99bb;
-  transition: left 0.08s linear;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* MOBILE CONTROLS */
+#mobile-controls {
+  display: flex;
+  gap: 40px;
+  margin-top: 15px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.control-btn {
+  width: 80px;
+  height: 80px;
+  font-size: 36px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff99cc 0%, #ff66aa 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(255,0,150,0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.control-btn:active,
+.control-btn.active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 10px rgba(255,0,150,0.6);
+  background: linear-gradient(135deg, #ff66aa 0%, #ff3388 100%);
+}
+
+/* INSTRUCTIONS */
+#instructions {
+  margin-top: 15px;
+  color: #ff3399;
+  font-size: 15px;
+  font-weight: bold;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 2px solid #ffccdd;
+  max-width: 400px;
+}
+
+#instructions p {
+  margin: 6px 0;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+  body {
+    padding: 5px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin: 10px 0;
+  }
+  
+  #game {
+    width: 100%;
+    max-width: 380px;
+    height: 550px;
+  }
+  
+  #stats-container {
+    gap: 8px;
+  }
+  
+  #score-board, #high-score-board, #lives-board {
+    font-size: 18px;
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+  
+  #start-btn {
+    padding: 12px 28px;
+    font-size: 18px;
+  }
+  
+  #combo {
+    font-size: 36px;
+  }
+  
+  .control-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+  }
+  
+  #mobile-controls {
+    gap: 30px;
+  }
+
+  #instructions {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 8px 12px;
+    min-width: 100px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  #game {
+    max-width: 320px;
+    height: 480px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  #girl {
+    width: 50px;
+  }
+
+  #boy {
+    width: 85px;
+  }
+
+  #boy-face {
+    width: 75px;
+  }
+}
+
+/* Prevent zoom on iOS */
+@media (hover: none) and (pointer: coarse) {
+  select, button, input {
+    font-size: 16px !important;
+  }
 }
